@@ -19,7 +19,8 @@ module Formtastic
 
       linker = self.template.content_tag(:ul, linker, :class => "language-selection")
 
-      self.template.content_tag(:div, linker + fields, :class => "language-tabs-#{index}") + self.template.content_tag(:script, "$('.language-tabs-#{index}').tabs();", :type => "text/javascript")
+      js = "$('.language-tabs-#{index}').tabs();"
+      self.template.content_tag(:div, linker + fields, :class => "language-tabs-#{index}") + self.template.content_tag(:script, js.html_safe, :type => "text/javascript")
     end
   end
 end
